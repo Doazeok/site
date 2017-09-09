@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>  
+  <title>GemShop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+<!-- libs -->
+
+  <!-- <link rel="stylesheet" href="lib/bootstrap.min.css"></script> -->
+  <!-- <script type='text/javascript' src="lib/jquery-2.2.4.min.js"></script> -->
+  <!-- <script type='text/javascript' src="lib/bootstrap.min.js"></script> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script type='text/javascript' src="lib/knockout-3.4.2.min.js"></script>
+  <script type='text/javascript' src='lib/pager.min.js'></script>
+  <script type='text/javascript' src="lib/knockout.validation.min.js"></script>
+
+  <script type="text/javascript" src="lib/jquery.maskedinput.min.js" ></script>
+
+<!-- css -->
+  <link rel="stylesheet" href="css/shop.css">
+  <link rel="stylesheet" href="css/carousel.css">
+  <link rel="stylesheet" href="css/news.css">
+</head>
+<body>
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="categories nav navbar-nav">
+          <li><a data-bind="page-href: '/carousel'">home  </a></li>
+          <li><a data-bind="page-href: '/shop'">mrc</a></li>
+          <li><a data-bind="page-href: '/news'">news</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+  <br>
+
+  <!-- carousel -->
+  <div data-bind="page: {
+                id: 'carousel', 
+                title: 'GemShop | home',
+                source: 'pages/carousel.html',
+                role: 'start'
+      }">
+  </div>
+
+  <!-- shop -->
+  <div data-bind="page: {
+                id: 'shop', 
+                title: 'GemShop | shop',
+                source: 'pages/shop.html'
+      }">
+  </div>
+
+  <!-- news -->
+  <div data-bind="page: {
+                id: 'news', 
+                title: 'GemShop | news',
+                source: 'pages/news.html'
+      }">
+
+</body>
+<!-- js -->
+  <script src="js/shop.js"></script>
+  <script src="js/news.js"></script>
+  <script src="js/maskedinput.js"></script>
+  <!-- <script src="js/validation.js"></script> -->
+
+<script>
+$( document ).ready(function() {
+  pager.extendWithPage(shopModel);
+  ko.applyBindings(shopModel);
+  pager.start();
+  ko.validation.init();
+  ko.validation.registerExtenders();
+  shopModel.errors = ko.validation.group(shopModel);
+  
+  setTimeout(function() {
+  maskedinput()
+  }, 500)
+});
+</script>
+</html>

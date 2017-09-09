@@ -1,0 +1,251 @@
+<!-- ko with: shopModel -->
+<div class="container main">
+  <div class="header">
+    <h1>Ювелирная Лавка</h1>
+    <p>Драгоценные и полудрагоценные камни</p>
+  </div>
+
+  <div class="row">
+    <!-- столбец с формами -->
+    <div class="col-sm-5 col-xs-12 inputs">
+      <label>
+        <select class="form-control" 
+                data-bind="
+                  options: products,
+                  optionsText: 'name',
+                  value: goods,
+                  optionsCaption: 'Choose...'
+                  ">
+        </select>
+        <p>Товар: 
+          <!-- ko if: goods--> 
+            <span data-bind="text: goods().name"> </span> 
+          <!-- /ko -->
+        </p>
+      </label>
+
+      <!--................... Товар -->
+
+      <!--................... Количество -->
+      <div class="form-group">
+        <div class="row">
+          <div class='col-xs-4'>
+            <label>
+              <input 
+                id="number" 
+                class="form-control"
+                data-bind="value: amount, valueUpdate: 'input'"
+              />
+              <p>Кол-во: 
+                <span data-bind="text: amount"></span> 
+              </p>
+            </label>
+          </div>
+        </div>
+      </div>
+      <!--................... Количество -->
+
+
+      <!--................... Чекбокс -->
+      <div class="checkbox" onchange="shopModel.checkChange()">
+        <label>
+          <input type="checkbox"  data-bind="checked: delivery"></input>
+          Доставка
+        </label>
+      </div>
+      <!--................... Чекбокс -->
+
+      <!--................... Адрес -->
+      <div class="form-group">
+        <label>
+          <input
+            id="country"
+            class="form-control"
+            data-bind="value: country"
+            type="text"
+            placeholder="Страна"
+            />
+          <p
+            for="country"
+            data-bind="text: country">
+          </p>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label>
+          <input
+            id="city"
+            class="form-control"
+            data-bind="value: city"
+            type="text"
+            placeholder="Город"/>
+          <p
+            for="city"
+            data-bind="text: city">
+          </p>
+        </label>
+      </div>
+
+      <form >
+        <div class="form-group">
+          <label>
+            <input
+              id="house"
+              class="form-control dis"
+              data-bind="value: house"
+              type="text"
+              placeholder="Дом"
+              disabled="disabled"
+              />
+            <p
+              for="house"
+              data-bind="text: house">
+            </p>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label>
+            <input
+              id="apartment"
+              class="form-control dis"
+              data-bind="value: apartment"
+              type="text"
+              placeholder="Квартира"
+              disabled="disabled"
+              />
+            <p
+              for="apartment"
+              data-bind="text: apartment">
+            </p>
+          </label>
+        </div>
+
+      </form>
+      <!--................... Адрес -->
+
+
+      <!--................... Субмит -->
+      <button data-bind= 'click: submit' type="submit" class="btn btn-default">
+      Отправить
+      </button>
+      <!--................... Субмит -->
+
+    </div>
+    <!-- столбец с формами -->
+
+    <div class="clearfix visible-xs-block">
+    </div>
+
+      <!--............................ корзина -->
+      <div id="overflowWindow" class="col-sm-5 col-md-offset-1">
+        <div
+          data-bind="foreach: list" id="basket">
+          <div class="alert alert-success">
+          
+            <button data-bind="click: $parent.remove" type="button"
+            class="close" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button><br><!-- X -->
+
+            <div class="container-fluid" >
+
+              <div class="row" >
+                <div class="col-xs-7" >
+                  <p>Товар: </p>
+                </div>
+                <div class="col-xs-5">
+                  <p data-bind="text: $data.goods.name"></p>
+                </div>
+              </div>
+
+              <div class="row" >
+                <div class="col-xs-7">
+                  <p >Количество: </p>
+                </div>
+                <div class="col-xs-5">
+                  <p data-bind="text: $data.amount"></p>
+                </div>
+              </div>
+
+              <div class="row" >
+                <div class="col-xs-7">
+                  <p >Страна: </p>
+                </div>
+                <div class="col-xs-5">
+                  <p data-bind="text: $data.country"></p>
+                </div>
+              </div>
+
+              <div class="row" >
+                <div class="col-xs-7">
+                  <p >Город: </p>
+                </div>
+                <div class="col-xs-5">
+                  <p data-bind="text: $data.city"></p>
+                </div>
+              </div>
+
+              <div class="row" >
+              </div>
+
+              <div class="row" >
+                <div class="col-xs-12">
+                  <p data-bind="text: check ? 'С доставкой' : 'Без доставки'"></p>
+                </div>
+              </div>
+
+              <div class="row" >
+              </div>
+
+              <div class="row" >
+                <div class="col-xs-7">
+                  <!-- ko if: check--> 
+                    <p >Дом: </p>
+                  <!-- /ko -->
+                </div>
+                <div class="col-xs-5">
+                  <p data-bind="text: $data.house"></p>
+                </div>
+              </div>
+
+              <div class="row" >
+              </div>
+
+              <div class="row" >
+                <div class="col-xs-7">
+                  <!-- ko if: check--> 
+                    <p >Квартира: </p>
+                  <!-- /ko -->
+                </div>
+                <div class="col-xs-5">
+                  <p data-bind="text: $data.apartment"></p>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ошибка -->
+        <div class="container-fluid" >
+          <div class="row" >
+              <div
+                id="error"
+                class="alert alert-danger"
+                role="alert"
+                data-bind="visible: errorMessage"
+                >
+                Заполните все поля правильно!
+              </div>
+          </div>
+        </div>
+        <!-- ошибка -->
+      </div>
+  </div>
+<!-- ............................ корзина -->
+
+</div>
+<!-- /ko -->

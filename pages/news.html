@@ -1,0 +1,65 @@
+<div class='news'>
+	<!-- ko with: paginationModel -->
+
+		<button data-bind= 'click: sorter' type="submit" class="btn btn-default btn-sm">
+			По дате 
+			<!-- ko if: count--> 
+
+				<!-- ko if: sorterCount--> 
+					<span class='glyphicon glyphicon-arrow-up'></span>
+				<!-- /ko -->
+				<!-- ko ifnot: sorterCount--> 
+					<span class='glyphicon glyphicon-arrow-down'></span>
+				<!-- /ko -->
+
+			<!-- /ko -->
+		</button>
+
+		<!-- ko foreach: paginated -->
+			<div>
+				<div data-bind="text: $data.content" class='contenter'></div>
+
+				<blockquote data-bind="text: $data.date.toDateString()" class="col-md-offset-1">
+				</blockquote>
+
+				<hr>
+			</div>
+		<!-- /ko -->
+
+		<div class="text-center">
+			<nav aria-label="page numbers">
+				<ul class="pagination">
+					<li class="page-item">
+						<a 
+						class="page-link" 
+						href="#" 
+						aria-label="Previous" 
+						data-bind="click: previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+
+				<!-- ko foreach: totalPagesHolder -->
+					<li class="page-item" data-bind="attr: {'class': $parent.pageNumber() + 1 == $data ? 'active' : '' }">
+						<a
+						class="page-link"
+						href="#"
+						data-bind="click: $parent.pageController">
+							<span class="current" data-bind="text: $data"></span>
+						</a>
+					</li>
+				<!-- /ko -->
+
+					<li class="page-item">
+						<a 
+						class="page-link" 
+						href="#" aria-label="Next" 
+						data-bind="click: next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	<!-- /ko -->
+</div>

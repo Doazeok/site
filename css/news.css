@@ -1,0 +1,29 @@
+.gem { /*пички*/
+	height:150px;
+	margin-right: 10px;
+}
+.news { /*весь див*/
+	padding-top: 25px;
+	width: 80%;
+	background-color: #FFFFFF;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #1C0E00;
+}
+.contenter { /*посты*/
+	padding-left: 15px;
+	padding-right: 15px;
+}
+blockquote {
+  border-left: 0px;
+  color: grey;
+  font-size: 1em;
+  margin-bottom: 0em;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+hr {
+  margin-top: 1px;
+}

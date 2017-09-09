@@ -1,0 +1,40 @@
+body{
+  background-color: #000058;
+  background-image: url(../imgs/fon.png);
+  background-repeat: repeat;
+  background-position: center top;
+  padding-top: 25px;
+  padding-left: 25px;
+  color: #FFFFFF;
+}
+html { 
+  min-height: 100%;
+}
+.header {
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+.main {
+  padding-bottom: 20px;
+  width: 80%;
+  background-color: #1C0E00;
+}
+.inputs {
+  padding-bottom: 30px;
+}
+.subm {
+  padding-bottom: 30px;
+}
+.footer {
+  padding: 40px 0;
+  color: #E8FFFF;
+  text-align: center;
+}
+.validationMessage {
+  color: #FFA500; /*#ff4d4d;*/
+
+}
+#overflowWindow{
+  overflow: auto;
+  height: 600px;
+}
