@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="css/shop.css">
   <link rel="stylesheet" href="css/carousel.css">
   <link rel="stylesheet" href="css/news.css">
+  <link rel="stylesheet" href="css/api.css">
 </head>
 <body>
 
@@ -35,6 +36,7 @@
           <li><a data-bind="page-href: '/carousel'">home  </a></li>
           <li><a data-bind="page-href: '/shop'">mrc</a></li>
           <li><a data-bind="page-href: '/news'">news</a></li>
+          <li><a data-bind="page-href: '/api'">api</a></li>
         </ul>
       </div>
 
@@ -66,12 +68,21 @@
                 title: 'GemShop | news',
                 source: 'pages/news.html'
       }">
-
+  </div>
+  <!-- api -->
+  <div data-bind="page: {
+                id: 'api', 
+                title: 'GemShop | api',
+                source: 'pages/api.html',
+                beforeShow: api_model.getPosts
+      }">
+  </div>
 </body>
 <!-- js -->
   <script src="js/shop.js"></script>
   <script src="js/news.js"></script>
   <script src="js/maskedinput.js"></script>
+  <script src="js/api.js"></script>
   <!-- <script src="js/validation.js"></script> -->
 
 <script>

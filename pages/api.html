@@ -1,0 +1,10 @@
+<div class='api'>
+	<!-- ko with: api_model -->
+		<div data-bind="foreach: posts" class='posts'>
+			<p>
+				<h4 data-bind="text: $data.title"> </h4>
+				<span data-bind="text: $data.body"> </span>
+			</p>
+		</div>
+	<!-- /ko -->
+</div>
